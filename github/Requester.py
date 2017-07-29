@@ -321,6 +321,8 @@ class Requester:
 
     def __createConnection(self):
         kwds = {}
+        import ssl
+        kwds["context"] = ssl._create_unverified_context()
         if not atLeastPython3:  # pragma no branch (Branch useful only with Python 3)
             kwds["strict"] = True  # Useless in Python3, would generate a deprecation warning
         if atLeastPython26:  # pragma no branch (Branch useful only with Python 2.5)
